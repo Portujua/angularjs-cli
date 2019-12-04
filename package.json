@@ -1,0 +1,22 @@
+{
+  "name": "angularjs-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Portujua/angularjs-cli.git"
+  },
+  "author": "Eduardo Lorenzo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Portujua/angularjs-cli/issues"
+  },
+  "homepage": "https://github.com/Portujua/angularjs-cli#readme",
+  "dependencies": {
+    "underscore": "^1.9.1"
+  }
+}
