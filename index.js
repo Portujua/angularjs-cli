@@ -15,6 +15,20 @@ const ViewComponentGenerator = require('./generators/view.component')
 
 const outputFolder = 'output/';
 
+if (argv.params) {
+  console.log(`List of parameters:
+- entity : The entity name. Should be in Capitalized cammel case
+- fields : List of fields comma separated
+            (default: [])
+- permission : The permission entity
+            (default: cammelCase(entity))
+- color : The color for tabs
+            (default: color-1)
+- endpoint : REST API service endpoint
+            (default: cammelCase(entity))`)
+  return;
+}
+
 if (_.isUndefined(argv.entity)) {
   console.error('You must specify the entity name.')
   return;
