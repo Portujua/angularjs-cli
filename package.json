@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Portujua/angularjs-cli#readme",
   "dependencies": {
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "yargs": "^15.0.2"
   }
 }
