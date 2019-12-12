@@ -20,11 +20,12 @@ function generate(entity, opts, defaults = {}) {
              ng-class="{ 'fa-window-maximize': isCollapsed, 'fa-window-minimize': !isCollapsed }"></i>
         </button>
 
-        <button type="button"
-                class="close"
+        <button class="btn btn-default btn-sm"
+                type="button"
                 ng-click="$ctrl.cancel()"
                 ng-disabled="$ctrl.isSaving"
-                title="Cerrar">
+                uib-tooltip="{{ $ctrl.appContent.get('CLOSE') }}"
+                tooltip-append-to-body="true">
           <i class="fa fa-fw fa-times"></i>
         </button>
       </div>
