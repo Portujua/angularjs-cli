@@ -1,12 +1,12 @@
 const su = require('../utilities/StringUtils')
 const ou = require('../utilities/ObjectUtils')
 
-function generate(entity, opts, defaults = {}) {
+function generate(entity, opts, defaults = { plural: `${su.cammelCase(entity)}s` }) {
   opts = ou.smartCopy(opts, defaults)
 
   return `
 (() => {
-  class ${su.capitalize(entity)}sViewController {
+  class ${su.capitalize(opts.plural)}ViewController {
     constructor(${su.capitalize(entity)}, ${su.capitalize(entity)}Service, Auth, $filter, AppContentService) {
       this.${su.capitalize(entity)} = ${su.capitalize(entity)};
       this.${su.capitalize(entity)}Service = ${su.capitalize(entity)}Service;
@@ -34,9 +34,9 @@ function generate(entity, opts, defaults = {}) {
     }
   }
 
-  angular.module('app').component('${entity}sView', {
-    templateUrl: 'views/${entity}s/${entity}s.view.html',
-    controller: ${su.capitalize(entity)}sViewController,
+  angular.module('app').component('${su.cammelCase(opts.plural)}View', {
+    templateUrl: 'views/${su.cammelCase(opts.plural)}/${su.cammelCase(opts.plural)}.view.html',
+    controller: ${su.capitalize(opts.plural)}ViewController,
     bindings: {
       tabId: '@',
       parentId: '@',

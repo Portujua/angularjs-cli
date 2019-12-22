@@ -1,7 +1,7 @@
 const su = require('../utilities/StringUtils')
 const ou = require('../utilities/ObjectUtils')
 
-function generate(entity, opts, defaults = { endpoint: su.dasherize(entity) + 's', color: 'color-1' }) {
+function generate(entity, opts, defaults = { endpoint: su.dasherize(entity) + 's', color: 'color-1', plural: `${su.cammelCase(entity)}s` }) {
   opts = ou.smartCopy(opts, defaults)
 
   return `
@@ -47,7 +47,7 @@ function generate(entity, opts, defaults = { endpoint: su.dasherize(entity) + 's
       let modalInstance = this.$uibModal.open({
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
-        component: '${entity}sNew',
+        component: '${su.cammelCase(opts.plural)}New',
         keyboard: true,
         // Indicates whether the dialog should be closable by hitting the ESC key.
         backdrop: 'static',
@@ -65,7 +65,7 @@ function generate(entity, opts, defaults = { endpoint: su.dasherize(entity) + 's
     //     order: 1,
     //     icon: 'fa-book',
     //     tab: {
-    //       component: '${entity}sList',
+    //       component: '${su.cammelCase(opts.plural)}List',
     //       // icon: 'fa-book',
     //       color: '${opts.color}'
     //     },

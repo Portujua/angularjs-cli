@@ -21,7 +21,7 @@ angular.module('app')
         if (_.isEmpty(field)) {
           // Bulk update
           return {
-            //
+            id: this.id
           };
         }
 

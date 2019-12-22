@@ -1,12 +1,12 @@
 const su = require('../utilities/StringUtils')
 const ou = require('../utilities/ObjectUtils')
 
-function generate(entity, opts, defaults = {}) {
+function generate(entity, opts, defaults = { plural: `${su.cammelCase(entity)}s` }) {
   opts = ou.smartCopy(opts, defaults)
 
   return `
 (() => {
-  class ${su.capitalize(entity)}sListController extends BaseController {
+  class ${su.capitalize(opts.plural)}ListController extends BaseController {
     constructor(${su.capitalize(entity)}Service, Auth, NgTableParams, AppContentService, ${su.capitalize(entity)}) {
       super();
       this.${su.capitalize(entity)}Service = ${su.capitalize(entity)}Service;
@@ -54,9 +54,9 @@ function generate(entity, opts, defaults = {}) {
     }
   }
 
-  angular.module('app').component('${entity}sList', {
-    templateUrl: 'views/${entity}s/${entity}s.list.html',
-    controller: ${su.capitalize(entity)}sListController,
+  angular.module('app').component('${su.cammelCase(opts.plural)}List', {
+    templateUrl: 'views/${su.cammelCase(opts.plural)}/${su.cammelCase(opts.plural)}.list.html',
+    controller: ${su.capitalize(opts.plural)}ListController,
     bindings: {
       tabId: '@'
     }

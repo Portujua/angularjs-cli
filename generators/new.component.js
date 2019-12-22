@@ -1,12 +1,12 @@
 const su = require('../utilities/StringUtils')
 const ou = require('../utilities/ObjectUtils')
 
-function generate(entity, opts, defaults = {}) {
+function generate(entity, opts, defaults = { plural: `${su.cammelCase(entity)}s` }) {
   opts = ou.smartCopy(opts, defaults)
 
   return `
 (() => {
-  class ${su.capitalize(entity)}sNewController extends BaseController {
+  class ${su.capitalize(opts.plural)}NewController extends BaseController {
     constructor(${su.capitalize(entity)}Service, ${su.capitalize(entity)}, AppContentService, $scope) {
       super();
       this.${su.capitalize(entity)}Service = ${su.capitalize(entity)}Service;
@@ -47,9 +47,9 @@ function generate(entity, opts, defaults = {}) {
     }
   }
 
-  angular.module('app').component('${entity}sNew', {
-    templateUrl: 'views/${entity}s/${entity}s.new.html',
-    controller: ${su.capitalize(entity)}sNewController,
+  angular.module('app').component('${su.cammelCase(opts.plural)}New', {
+    templateUrl: 'views/${su.cammelCase(opts.plural)}/${su.cammelCase(opts.plural)}.new.html',
+    controller: ${su.capitalize(opts.plural)}NewController,
     controllerAs: '$ctrl',
     bindings: {
       modalInstance: '<',
