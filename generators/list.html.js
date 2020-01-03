@@ -32,7 +32,7 @@ function generate(entity, opts, defaults = { permission: su.cammelCase(entity), 
               class="text-center">
             <a href=""
                title=""
-               drilldown="{ title: item.name, component: '${su.cammelCase(entity)}sView', id: item.id, can: $ctrl.session.can('${opts.permission}', 'get'), color: '${opts.color}' }">
+               drilldown="{ title: item.name, component: '${su.cammelCase(entity)}sView', id: item.id, can: $ctrl.session.can('${opts.permission}', 'get'), color: $ctrl.${su.capitalize(entity)}Service.color }">
               {{ item.name | available }}
             </a>
           </td>

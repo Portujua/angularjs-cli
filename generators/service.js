@@ -7,13 +7,14 @@ function generate(entity, opts, defaults = { endpoint: su.dasherize(entity) + 's
   return `
 (() => {
   class ${su.capitalize(entity)}Service extends BaseService {
-    constructor(RESTful, $q, Message, $uibModal, AppContentService) {
+    constructor(RESTful, $q, Message, $uibModal, AppContentService, ColorService) {
       super();
       this.RESTful = RESTful;
       this.$q = $q;
       this.Message = Message;
       this.$uibModal = $uibModal;
       this.appContent = AppContentService;
+      this.color = ColorService.get();
     }
 
     list(query) {
@@ -67,9 +68,9 @@ function generate(entity, opts, defaults = { endpoint: su.dasherize(entity) + 's
     //     tab: {
     //       component: '${su.cammelCase(opts.plural)}List',
     //       // icon: 'fa-book',
-    //       color: '${opts.color}'
+    //       color: this.color
     //     },
-    //     color: '${opts.color}',
+    //     color: this.color,
     //     module: '${entity}',
     //     permission: 'list'
     //   };

@@ -30,7 +30,9 @@ if (argv.params) {
 - color : The color for tabs
             (default: color-1)
 - endpoint : REST API service endpoint
-            (default: cammelCase(entity))`)
+            (default: cammelCase(entity))
+- plural : The plural writing of the entity
+            (default: {entity}s)`)
   return;
 }
 
