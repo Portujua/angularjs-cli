@@ -62,7 +62,7 @@ function generate(entity, opts, defaults = { endpoint: su.dasherize(entity) + 's
 
     // getSidebarButton() {
     //   return {
-    //     title: this.appContent.get('${entity.toUpperCase()}'),
+    //     title: this.appContent.get('${opts.plural.toUpperCase()}'),
     //     order: 1,
     //     icon: 'fa-book',
     //     tab: {
